@@ -1,0 +1,16 @@
+header {
+  background: var(--primary);
+  color: var(--light);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between; /* keeps logo left, menu right */
+  align-items: center;
+  position: relative;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin-left: auto; /* pushes it to the right */
+}
