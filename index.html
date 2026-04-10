@@ -159,6 +159,7 @@
       margin-top: 40px;
     }
   </style>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
   <header>
@@ -210,6 +211,7 @@
         <p>Creative tools to inspire your journey.</p>
       </div>
     </div>
+	<button id="checkout-button">Buy Now</button>
   </section>
 
   <section id="contact" class="section">
@@ -230,5 +232,31 @@
       menu.classList.toggle('active');
     });
   </script>
+  <script>
+  document.getElementById('checkout-button').onclick = function(e){
+    var options = {
+      "key": "rzp_test_SbIvcsHe4MZe2Q", // Replace with your Razorpay Key ID
+      "amount": "200000", // Amount in paise (200000 = ₹2000)
+      "currency": "INR",
+      "name": "AG's",
+      "description": "Product Purchase",
+      "image": "https://yourdomain.com/logo.png",
+      "handler": function (response){
+          alert("Payment successful! Payment ID: " + response.razorpay_payment_id);
+      },
+      "prefill": {
+          "name": "Customer Name",
+          "email": "customer@example.com",
+          "contact": "9999999999"
+      },
+      "theme": {
+          "color": "#18BC9C"
+      }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+    e.preventDefault();
+  }
+</script>
 </body>
 </html>
